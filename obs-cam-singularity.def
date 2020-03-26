@@ -1,0 +1,27 @@
+BootStrap: library
+From: alpine:3.9
+
+%post
+    apk add qt5-qtbase-dev qt5-qtbase-x11 qt5-qtsvg-dev qt5-qtx11extras-dev ffmpeg-dev curl-dev x264-dev git cmake ninja gcc g++ mesa-gl mesa-dri-ati mesa-dri-intel ttf-dejavu libxcomposite-dev v4l-utils-dev
+
+    git clone "https://github.com/obsproject/obs-studio.git" --depth 1
+    cd obs-studio
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX="/usr" -GNinja ..
+    ninja install
+
+    cd ../..
+    git clone https://github.com/CatxFish/obs-v4l2sink.git --depth 1
+    cd obs-v4l2sink
+    mkdir build
+    cd build
+    cmake -DLIBOBS_INCLUDE_DIR="../../obs-studio/libobs" -DCMAKE_INSTALL_PREFIX=/usr -GNinja ..
+    ninja install
+
+
+%environment
+    export QT_QPA_PLATFORM=""
+
+%runscript
+    obs
