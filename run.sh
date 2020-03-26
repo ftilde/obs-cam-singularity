@@ -1,6 +1,8 @@
 #! /bin/sh
 
-CONTAINER_FILE="./obs.sif"
+SCRIPT_LOCATION=$(dirname $0)
+
+CONTAINER_FILE="$SCRIPT_LOCATION/obs.sif"
 
 set -e
 
@@ -27,4 +29,4 @@ echo "Select one of them in OBS in Tools->V4l2 Video Output->Path to V4L2 Device
 echo "##########################################################################"
 echo ""
 
-./obs.sif
+$CONTAINER_FILE
