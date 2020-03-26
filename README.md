@@ -1,7 +1,7 @@
 # obs-cam-singularity
 
 Prepackaged singularity container of [OBS Studio](https://obsproject.com/) and the [obs-v4l2sink plugin](https://github.com/CatxFish/obs-v4l2sink).
-Use OBS to configure your video-conference appearance.
+Use OBS to customize your video-conference appearance.
 
 ## Dependencies
 * [Singularity](https://sylabs.io/singularity/) (preferably installed using your package manager)
@@ -11,7 +11,7 @@ Use OBS to configure your video-conference appearance.
 
 Use the provided shell script:
 ```
-$ ./run.sh
+$ ./build.sh
 ```
 
 Note that you might be required to execute it with root privileges.
@@ -20,19 +20,19 @@ Note that you might be required to execute it with root privileges.
 
 First make sure that the `v4l2loopback` kernel module is loaded:
 ```
-modprobe v4l2loopback
+$ modprobe v4l2loopback
 ```
 Once again, this requires root privileges.
 
 Then, run OBS using the provided run script:
 ```
-./run.sh
+$ ./run.sh
 ```
 
 The script should tell you at the very top which device you have to select in OBS for output (and in your video conferencing software for input). For example:
 ```
 ##########################################################################
-Your virtual video device are:
+Your virtual video devices are:
 
 /dev/video0
 

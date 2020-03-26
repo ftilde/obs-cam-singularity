@@ -17,7 +17,7 @@ if ! lsmod | grep v4l2loopback &> /dev/null; then
 fi
 
 echo "##########################################################################"
-echo "Your virtual video device are:"
+echo "Your virtual video devices are:"
 echo ""
 
 for d in $(ls /sys/devices/virtual/video4linux/); do
